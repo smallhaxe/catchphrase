@@ -8,22 +8,43 @@
     
     <!-- STYLESHEETS -->
     <link rel="stylesheet"
-    href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/style.css">
+    href="bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
 
     <!-- JAVASCRIPTS -->
     <script type="text/javascript"
-      src="../../bower_components/jquery/dist/jquery.min.js"></script>
+      src="jquery/dist/jquery.min.js"></script>
     <script type="text/javascript"
-      src="../../bower_components/underscore/underscore-min.js"></script>
+      src="underscore/underscore-min.js"></script>
     <script type="text/javascript"
-      src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../js/app.js"></script>
+      src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
 
   </head>
   
   <body>
     <!-- CODE -->
+    <header class="page-header">
+    <h1>CatchPhrase!ly <small>node.js ALL the terms.</small></h1>
+    </header>
+    
+    <form id="phrase-form" class="form-inline">
+      <input type="text" name="title" id="new-phrase" placeholder="Name the next Phrase, here." />
+      <input type="text" name="description" class="form-control"
+      placeholder="Be descriptive, here." />
+      <button type="submit" class="btn btn-default">Add Phrase!</button>
+    </form>
   </body>
-  
+
+  <!-- _TEMPLATES -->
+  <script type="text/template" id="phrases-template">
+    <% _.each(collection, function(item){ %>
+      <li class='list-group-item'><%= item.title %>
+        <span class="label label-default"><%= item.description %></span>
+        <button data-id="<%= item.id %>" onclick="Phrase.learned(this)"
+          type="checkbox" aria-label="..."><span>Learned</span></button>
+      </li>
+    <% }); %>
+  </script>
+
 </html>

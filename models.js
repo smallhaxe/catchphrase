@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/catchphrase_db');
 
 var phraseSchema = new mongoose.Schema({
+  _id: Number,
   title: {
     type: String,
     default: '',
